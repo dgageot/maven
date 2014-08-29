@@ -1,10 +1,8 @@
 FROM dgageot/java8
-maintainer David Gageot <david@gageot.net>
+MAINTAINER David Gageot <david@gageot.net>
 
-ENV DEBIAN_FRONTEND noninteractive
-
-# Install Maven
-RUN apt-get install -yqq maven
+RUN wget -q -O - http://apache.crihan.fr/dist/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz | tar xzf - -C /opt/
+ENV PATH $PATH:/opt/apache-maven-3.2.3/bin
 
 WORKDIR /home
 CMD ["mvn"]
